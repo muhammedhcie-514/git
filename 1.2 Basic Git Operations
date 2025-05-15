@@ -1,0 +1,41 @@
+1.2 Basic Git Operations
+Example: Create a Git repository MyGit in the local directory and initialize it. Create
+README.md of a project in the directory, with the content "this is my first repository".
+Create an Ansible playbook for installing the Nginx service.
+Step 1 Create and initialize a Git repository.
+Run the yum install -y git command to install Git and create a MyGit directory.
+Run the following commands to configure Git user information:
+[root@controller MyGit]# git config --global user.name "hcie"
+[root@controller MyGit]# git config --global user.email openeuler@hcie.com
+Check whether the configuration takes effect.
+Go to the MyGit directory and run the following command to initialize the repository:
+[root@controller MyGit]# git init
+After the initialization is complete, check whether the related directory file .git is
+generated.
+
+cd MyGit
+git init
+
+Step 2 Create related files and push them to the repository.
+Create related files in the MyGit directory as required.
+[root@controller MyGit]# echo "this is my first repository" > README.md
+[root@controller MyGit]# cat >> nginx.yml << EOF
+---
+- hosts: all
+ remote_user: root
+ gather_facts: false
+ tasks:
+ - yum:
+ name: nginx
+ state: present
+EOF
+⚫ Task: Run the git status command to check the current repository status.
+
+Run the following command to add related files to a stage:
+[root@controller MyGit]# git add .
+Check the current repository status.
+
+Run the following command to submit files to the repository:
+[root@controller MyGit]# git commit -m "first version"
+Check the status of the current repository again.
+
