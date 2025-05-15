@@ -1,0 +1,11 @@
+Example: Create a branch for the created repository and use Apache to replace Nginx.
+Step 1 Create a branch.
+Run the following command to create a branch and name it "apache":
+[root@controller MyGit]# git checkout -b apache
+In the current branch, run the following command to replace Nginx with httpd in the
+nginx.yml file:
+[root@controller MyGit]# sed -i "s/nginx/httpd/g" nginx.yml
+After the operation is complete, check the current repository status.
+Push files in the branch to the repository.
+
+
